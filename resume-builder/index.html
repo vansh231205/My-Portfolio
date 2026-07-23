@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resume Builder — build a clean resume in your browser</title>
+  <meta name="description" content="A free, browser-based resume builder for students. Fill in your details, see a live preview, and download as PDF. No signup, nothing leaves your device.">
+  <meta name="theme-color" content="#0f172a">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- =====================================================
+     TOP BAR
+     ===================================================== -->
+<header class="topbar">
+  <div class="topbar__brand">
+    <span class="topbar__logo" aria-hidden="true">📄</span>
+    <div>
+      <h1>Resume Builder</h1>
+      <p>Everything stays on your device</p>
+    </div>
+  </div>
+
+  <div class="topbar__actions">
+    <button type="button" class="btn btn--ghost" id="btnSample">Load sample</button>
+    <button type="button" class="btn btn--ghost" id="btnImport">Import</button>
+    <button type="button" class="btn btn--ghost" id="btnExport">Export</button>
+    <button type="button" class="btn btn--ghost btn--danger" id="btnClear">Clear</button>
+    <button type="button" class="btn" id="btnPrint">Download PDF</button>
+    <input type="file" id="fileInput" accept="application/json" hidden>
+  </div>
+</header>
+
+<!-- Mobile: switch between form and preview -->
+<div class="tabs" role="tablist">
+  <button type="button" class="tabs__btn is-active" data-tab="edit" role="tab" aria-selected="true">Edit</button>
+  <button type="button" class="tabs__btn" data-tab="preview" role="tab" aria-selected="false">Preview</button>
+</div>
+
+<main class="app">
+
+  <!-- =====================================================
+       LEFT: FORM
+       ===================================================== -->
+  <section class="panel panel--form" id="panelEdit" aria-label="Resume details">
+
+    <!-- ---------- Design ---------- -->
+    <details class="group" open>
+      <summary class="group__head">
+        <span class="group__title">Design</span>
+        <span class="group__chev" aria-hidden="true"></span>
+      </summary>
+      <div class="group__body">
+        <label class="field">
+          <span>Template</span>
+          <select id="designTemplate">
+            <option value="classic">Classic — single column, underlined headings</option>
+            <option value="modern">Modern — accent header band</option>
+            <option value="minimal">Minimal — clean, understated</option>
+            <option value="sidebar">Sidebar — two-column, coloured side panel</option>
+          </select>
+        </label>
+        <div class="row row--3">
+          <label class="field">
+            <span>Accent colour</span>
+            <input type="color" id="designAccent" value="#2563eb">
+          </label>
+          <label class="field">
+            <span>Font</span>
+            <select id="designFont">
+              <option value="sans">Inter (sans)</option>
+              <option value="serif">Source Serif (serif)</option>
+              <option value="mono">JetBrains Mono</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>Density</span>
+            <select id="designDensity">
+              <option value="normal">Normal</option>
+              <option value="compact">Compact</option>
+              <option value="roomy">Roomy</option>
+            </select>
+          </label>
+        </div>
+      </div>
+    </details>
+
+    <!-- ---------- Personal ---------- -->
+    <details class="group" open>
+      <summary class="group__head">
+        <span class="group__title">Personal details</span>
+        <span class="group__chev" aria-hidden="true"></span>
+      </summary>
+      <div class="group__body">
+        <div class="row row--2">  
+          <label class="field">
+            <span>Full name</span>
+            <input type="text" data-bind="personal.fullName" placeholder="Your Name">
+          </label>
+          <label class="field">
+            <span>Title / role</span>
+            <input type="text" data-bind="personal.role" placeholder="Your Job Title">
+          </label>
+        </div>
+        <div class="row row--2">
+          <label class="field">
+            <span>Email</span>
+            <input type="email" data-bind="personal.email" placeholder="your.email@example.com">
+          </label>
+          <label class="field">
+            <span>Phone</span>
+            <input type="tel" data-bind="personal.phone" placeholder="+91 00000 00000">
+          </label>
+        </div>
+        <div class="row row--2">
+          <label class="field">
+            <span>Location</span>
+            <input type="text" data-bind="personal.location" placeholder="City, State">
+          </label>
+          <label class="field">
+            <span>Website / portfolio</span>
+            <input type="text" data-bind="personal.website" placeholder="yourwebsite.com">
+          </label>
+        </div>
+        <div class="row row--2">
+          <label class="field">
+            <span>LinkedIn</span>
+            <input type="text" data-bind="personal.linkedin" placeholder="linkedin.com/in/your-profile">
+          </label>
+          <label class="field">
+            <span>GitHub</span>
+            <input type="text" data-bind="personal.github" placeholder="github.com/your-username">
+          </label>
+        </div>
+      </div>
+    </details>
+
+    <!-- ---------- Summary ---------- -->
+    <details class="group" open>
+      <summary class="group__head">
+        <span class="group__title">Professional summary</span>
+        <span class="group__chev" aria-hidden="true"></span>
+      </summary>
+      <div class="group__body">
+        <label class="field">
+          <span>A short paragraph about you <em>(2–4 lines works best)</em></span>
+          <textarea data-bind="summary" rows="4" placeholder="Final-year B.Tech CSE (IoT) student with hands-on experience in full-stack web development…"></textarea>
+        </label>
+      </div>
+    </details>
+
+    <!-- ---------- Repeatable sections get injected here ---------- -->
+    <div id="repeaters"></div>
+
+  </section>
+
+  <!-- =====================================================
+       RIGHT: LIVE PREVIEW
+       ===================================================== -->
+  <section class="panel panel--preview" id="panelPreview" aria-label="Resume preview">
+    <div class="preview__toolbar">
+      <span class="preview__label">Live preview · A4</span>
+      <span class="pages" id="pageCount"></span>
+      <div class="preview__zoom">
+        <button type="button" id="zoomOut" aria-label="Zoom out">−</button>
+        <span id="zoomValue">100%</span>
+        <button type="button" id="zoomIn" aria-label="Zoom in">+</button>
+        <button type="button" id="zoomFit" class="preview__fit">Fit</button>
+      </div>
+    </div>
+
+    <div class="preview__scroll" id="previewScroll">
+      <div class="preview__stage" id="previewStage">
+        <!-- Ye wahi element hai jo print hota hai -->
+        <article class="resume" id="resume"></article>
+        <!-- Page-break guide lines — sirf preview me, print me nahi -->
+        <div class="guides" id="guides" aria-hidden="true"></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<p class="saved" id="savedNote" role="status" aria-live="polite"></p>
+
+<script src="app.js"></script>
+</body>
+</html>

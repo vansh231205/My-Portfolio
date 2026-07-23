@@ -1,0 +1,29 @@
+# ---- OS junk ----
+.DS_Store
+Thumbs.db
+desktop.ini
+ehthumbs.db
+
+# ---- Editor / IDE ----
+.vscode/
+.idea/
+*.swp
+*~
+
+# ---- Claude Code / tooling config (local only) ----
+.claude/
+
+# ---- Backups & originals (bade files repo me na jaayein) ----
+*-backup.*
+*-original.*
+*.bak
+
+# ---- Node (agar kabhi tooling add ho) ----
+node_modules/
+npm-debug.log*
+
+# ---- Resume Builder ke user exports (agar koi galti se yahan save kare) ----
+*-data.json
+
+# ---- Internal notes — public repo me nahi jaana (Funngro tracking, email, etc.) ----
+README.md

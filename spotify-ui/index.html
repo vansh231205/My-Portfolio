@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./img/logo.png">
+    <title>Spotify - Web Player: Music for everyone</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=google_home_devices" />
+</head>
+<body>
+    <div class="main">
+        <div class="side">
+
+            <div class="nav">
+                <div class="nav-options">
+                    <i class="fa-solid fa-house"></i>
+                    <a href="#" id="home">Home</a>
+                </div>
+                <div class="nav-options">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <a href="#">Search</a>
+                </div>
+            </div>
+
+            <div class="lib">
+                <div class="option">
+                   <div class="your-lib nav-options">
+                    <img src="./img/library_icon.png" >
+                    <a href="#">Your Library</a>
+                   </div>
+                    <div class="icon">
+                        <i class="fa-solid fa-plus"></i>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="box1">
+                        <div class="p1">Create your first playlist</div>
+                        <div class="p2">It's easy we'll help you</div>
+                        <button class="badge">Create playlist</button>
+                    </div>
+                    <div class="box1">
+                        <div class="p1">Let's find some podcasts to follow</div>
+                        <div class="p2">We'll keep you updated on new episodes</div>
+                        <button class="badge">Browse podcasts</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="con">
+            <div class="stickey-nav">
+                <div class="nav-arrow">
+                    <img src="./img/backward_icon.png" class="backward_icon">
+                    <img src="./img/forward_icon.png" class="forward_icon">
+                </div>
+                <div class="nav-user">
+                    <button class="badge nav-item">Explore Premiun</button>
+                    <div class="install-app nav-item">
+                        <i class="fa-regular fa-circle-down"></i>
+                        Install App
+                    </div>
+                    <i class="fa-regular fa-user user nav-item"></i>
+                </div>
+            </div>
+            <div class="main-con">
+                <h2>Recently Played</h2>
+                <div class="card-container">
+                    <div class="card">
+                        <img src="./img/card1img.jpeg">
+                        <p class="card-head">Top 50 - Global</p>
+                        <p class="card-detail">Your daily updates of the most played...</p>
+                    </div>
+                </div>
+
+                <h2>Trending now near you</h2>
+                <div class="card-container">
+                    <div class="card">
+                        <img src="./img/card2img.jpeg" alt="">
+                        <p class="card-head">Indie India</p>
+                        <p class="card-detail">Best of the India Indie</p>
+                    </div>
+                    <div class="card">
+                        <img src="./img/card3img.jpeg" alt="">
+                        <p class="card-head">Indie India</p>
+                        <p class="card-detail">Best of the India Indie</p>
+                    </div>
+                    <div class="card">
+                        <img src="./img/card4img.jpeg" alt="">
+                        <p class="card-head">Indie India</p>
+                        <p class="card-detail">Best of the India Indie</p>
+                    </div>
+                    <div class="card">
+                        <img src="./img/card5img.jpeg" alt="">
+                        <p class="card-head">Indie India</p>
+                        <p class="card-detail">Best of the India Indie</p>
+                    </div>
+                </div>
+
+                <h2>Featured Charts</h2>
+                <div class="card-container">
+                    <div class="card">
+                        <img src="./img/card5img.jpeg" alt="">
+                        <p class="card-head">Top Songs - Global</p>
+                        <card class="card-detail">Your weekly update of the most played tracks right...</card>
+                    </div>
+                    <div class="card">
+                        <img src="./img/card6img.jpeg" alt="">
+                        <p class="card-head">Top Songs - India</p>
+                        <card class="card-detail">Your weekly update of the most played tracks right...</card>
+                    </div>
+                    <div class="card">
+                        <img src="./img/card1img.jpeg" alt="">
+                        <p class="card-head">Top 50 - Global</p>
+                        <card class="card-detail">Your weekly update of the most played tracks right...</card>
+                    </div>
+                </div>
+            </div>
+            <div class="footer">
+                <div class="line"></div>
+            </div>
+        </div>  
+
+
+        <div class="music">
+
+            <div class="musicp">
+                <img src="./img/shameless.webp" class="bali">
+                <div class="song-name">
+                    <div class="song">Shameless</div>
+                    <div class="writer">Bali</div>
+                </div>
+                <div class="tickdiv">
+                    <img src="./img/Tick.png" class="tick">
+                </div>
+            </div>
+
+            <div class="player">
+                <div class="player-icon">
+                    <div class="picon1">
+                        <img src="./img/player_icon1.png">
+                        <img src="./img/player_icon2.png">
+                    </div>
+                    <img src="./img/player_icon3.png" id="music-player">
+                    <div class="picon2">
+                        <img src="./img/player_icon4.png" alt="">
+                        <img src="./img/player_icon5.png" alt="">
+                    </div>
+                </div>
+                <div class="progress-bar">
+                    <span>02:22</span>
+                    <input type="range" min="0" max="3:39" step="1" class="bar">
+                    <span>03:39</span>
+                </div>
+            </div>
+
+            <div class="adj">
+                <i class="fa-regular fa-circle-play"></i>
+                <i class="fa-solid fa-microphone-lines"></i>
+                <i class="fa-solid fa-layer-group"></i>
+                <span class="material-symbols-outlined">google_home_devices</span>
+                <i class="fa-solid fa-volume-high"></i>
+                <input type="range" min="0" max="100">
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

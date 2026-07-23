@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vansh Bhardwaj — IoT &amp; Full-Stack Developer</title>
+  <meta name="description" content="Vansh Bhardwaj — B.Tech CSE (IoT) student and full-stack developer. Web development, IoT, embedded systems. Projects, skills, and experience.">
+  <meta name="theme-color" content="#0a0e17">
+
+  <meta property="og:title" content="Vansh Bhardwaj — Full-Stack & IoT Developer">
+  <meta property="og:description" content="Full-stack + IoT developer. Web development, embedded systems, hackathon finalist.">
+  <meta property="og:type" content="website">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <!-- Scroll progress bar (top edge) -->
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+  <!-- ============================ NAVBAR ============================ -->
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a href="#hero" class="logo">&lt;VB<span>/</span>&gt;</a>
+
+      <nav class="nav__links" id="navLinks" aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact" class="btn btn--sm">Contact</a>
+      </nav>
+
+      <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+  <div class="nav__overlay" id="navOverlay" hidden></div>
+
+  <main id="main">
+
+  <!-- ============================ HERO ============================ -->
+  <section class="hero" id="hero">
+    <div class="hero__glow"></div>
+    <div class="container hero__inner">
+      <div class="hero__content">
+        <p class="status"><span class="status__dot"></span> Available for internships &amp; freelance</p>
+        <p class="hero__hi"><span class="mono">$</span> hi, my name is</p>
+        <h1 class="hero__name">Vansh Bhardwaj</h1>
+        <h2 class="hero__role">I build for the web <span class="amp">&amp;</span> the physical world.</h2>
+        <p class="hero__text">
+          Final-stretch B.Tech CSE (IoT) student at RKGIT, Ghaziabad. I work across
+          full-stack web development, embedded systems, and IoT — from React
+          front-ends and Node backends to ESP8266 hardware and AI-assisted automation.
+        </p>
+        <div class="hero__actions">
+          <a href="#projects" class="btn">View my work</a>
+          <a href="#contact" class="btn btn--ghost">Get in touch</a>
+        </div>
+        <ul class="hero__meta">
+          <li><span class="mono">📍</span> Ghaziabad, UP</li>
+          <li><span class="mono">🎓</span> B.Tech CSE (IoT) · Final Year</li>
+          <li><span class="mono">⚡</span> Full-stack · IoT · Embedded</li>
+        </ul>
+      </div>
+
+      <!-- Right column: decorative terminal card (laptop only) -->
+      <aside class="hero__visual" aria-hidden="true">
+        <div class="code-card">
+          <div class="code-card__bar">
+            <span></span><span></span><span></span>
+            <em class="mono">vansh.js</em>
+          </div>
+          <pre class="code-card__body"><code><span class="c-key">const</span> <span class="c-var">vansh</span> = {
+  role:     <span class="c-str">"Full-stack + IoT dev"</span>,
+  stack:    [<span class="c-str">"React"</span>, <span class="c-str">"Node"</span>, <span class="c-str">"Python"</span>],
+  hardware: [<span class="c-str">"ESP8266"</span>, <span class="c-str">"Arduino"</span>],
+  focus:    <span class="c-str">"web · embedded · IoT"</span>,
+  status:   <span class="c-str">"available"</span>,
+};
+
+<span class="c-var">vansh</span>.<span class="c-fn">build</span>(); <span class="c-com">// → ships things that work</span></code></pre>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ============================ ABOUT ============================ -->
+  <section class="section" id="about">
+    <div class="container">
+      <h2 class="section__title"><span class="section__num">01.</span> About me</h2>
+      <div class="about">
+        <div class="about__text">
+          <p>
+            I'm a final-year-track Computer Science (IoT) student with hands-on
+            experience building things that ship — full-stack web apps, embedded
+            systems, and real-time IoT devices.
+          </p>
+          <p>
+            I've led a five-person team through a robotics build, interned in web
+            &amp; network development at Netcamp Solutions, and reached the internal
+            finals of the Smart India Hackathon. I like problems that sit between
+            software and hardware, and I care about writing code other people can
+            actually read and maintain.
+          </p>
+          <p>
+            Right now I'm taking on freelance web projects while I finish my degree —
+            landing pages, portfolios, and full-stack apps.
+          </p>
+        </div>
+        <aside class="about__card">
+          <div class="about__avatar" aria-hidden="true">VB</div>
+          <dl class="about__facts">
+            <div><dt>Degree</dt><dd>B.Tech CSE (IoT)</dd></div>
+            <div><dt>College</dt><dd>RKGIT, Ghaziabad</dd></div>
+            <div><dt>Graduating</dt><dd>2027</dd></div>
+            <div><dt>Focus</dt><dd>Full-stack · IoT</dd></div>
+          </dl>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ SKILLS ============================ -->
+  <section class="section section--alt" id="skills">
+    <div class="container">
+      <h2 class="section__title"><span class="section__num">02.</span> Skills &amp; tools</h2>
+      <div class="skills">
+        <div class="skills__group">
+          <h3>Languages</h3>
+          <ul class="tags">
+            <li>Python</li><li>JavaScript</li><li>SQL</li><li>C</li>
+          </ul>
+        </div>
+        <div class="skills__group">
+          <h3>Web &amp; Backend</h3>
+          <ul class="tags">
+            <li>HTML</li><li>CSS</li><li>React</li><li>Node.js</li>
+            <li>Express.js</li><li>REST APIs</li><li>EJS</li>
+            <li>MongoDB</li><li>MySQL</li>
+          </ul>
+        </div>
+        <div class="skills__group">
+          <h3>Tools</h3>
+          <ul class="tags">
+            <li>Git</li><li>GitHub</li><li>VS Code</li><li>Arduino IDE</li>
+          </ul>
+        </div>
+        <div class="skills__group">
+          <h3>Concepts</h3>
+          <ul class="tags">
+            <li>OOP</li><li>Data Structures</li><li>IoT Systems</li>
+            <li>IAM / Security</li><li>Network Management</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ PROJECTS ============================ -->
+  <section class="section" id="projects">
+    <div class="container">
+      <h2 class="section__title"><span class="section__num">03.</span> Projects</h2>
+
+      <div class="projects">
+
+        <!-- Featured: live site -->
+        <article class="project project--featured">
+          <div class="project__body">
+            <p class="project__label mono">Featured · Live</p>
+            <h3 class="project__title">Iron Forge Fitness</h3>
+            <p class="project__desc">
+              A responsive business landing page for a fitness studio — working
+              contact form with validation, photo gallery, FAQ accordion, animated
+              stats, and a mobile slide-in menu. Loads in under 2 seconds and works
+              on every screen size from 320px up.
+            </p>
+            <ul class="tags tags--sm">
+              <li>HTML</li><li>CSS</li><li>JavaScript</li><li>Responsive</li>
+            </ul>
+            <div class="project__links">
+              <a href="https://ironforge-studio.netlify.app" target="_blank" rel="noopener" class="is-primary">Live site ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="project__body">
+            <p class="project__label mono">Full-stack web app · Live</p>
+            <h3 class="project__title">Resume Builder</h3>
+            <p class="project__desc">
+              A browser-based resume builder for students — fill in a form and watch
+              an A4 preview build itself, then export to PDF. Four templates, live
+              page-count with break guides, and autosave. Everything stays on device.
+            </p>
+            <ul class="tags tags--sm"><li>HTML</li><li>CSS</li><li>JavaScript</li></ul>
+            <div class="project__links">
+              <a href="resume-builder/index.html" target="_blank" rel="noopener" class="is-primary">Live demo ↗</a>
+              <a href="https://github.com/vansh231205/Resume-Builder" target="_blank" rel="noopener" data-repo="resume-builder">Code ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="project__body">
+            <p class="project__label mono">Vanilla JS game · Live</p>
+            <h3 class="project__title">Simon Says Game</h3>
+            <p class="project__desc">
+              An interactive memory game in pure JavaScript — dynamic color-sequence
+              generation, progressive difficulty each level, visual flash feedback,
+              and game-over detection on wrong input.
+            </p>
+            <ul class="tags tags--sm"><li>HTML</li><li>CSS</li><li>JavaScript</li></ul>
+            <div class="project__links">
+              <a href="simon-says/index.html" target="_blank" rel="noopener" class="is-primary">Live demo ↗</a>
+              <a href="https://github.com/vansh231205/Simon-Says" target="_blank" rel="noopener">Code ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="project__body">
+            <p class="project__label mono">UI clone · Live</p>
+            <h3 class="project__title">Spotify Web UI</h3>
+            <p class="project__desc">
+              A pixel-focused recreation of the Spotify web player interface, built
+              to practise precise layout work with HTML and CSS — flexbox, grid, and
+              responsive spacing.
+            </p>
+            <ul class="tags tags--sm"><li>HTML</li><li>CSS</li></ul>
+            <div class="project__links">
+              <a href="spotify-ui/index.html" target="_blank" rel="noopener" class="is-primary">Live demo ↗</a>
+              <a href="https://github.com/vansh231205/Spotify-UI-Design" target="_blank" rel="noopener">Code ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="project__body">
+            <p class="project__label mono">IoT · Team lead</p>
+            <h3 class="project__title">WiFi-Controlled Robo Car</h3>
+            <p class="project__desc">
+              A WiFi-controlled robot car on ESP8266 with ultrasonic obstacle
+              detection and real-time browser-based control. Led a team of five
+              through the full development lifecycle, planning to deployment.
+            </p>
+            <ul class="tags tags--sm"><li>IoT</li><li>ESP8266</li><li>Ultrasonic Sensor</li><li>IR Sensor</li><li>Motor Driver</li></ul>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="project__body">
+            <p class="project__label mono">Python · AI</p>
+            <h3 class="project__title">Vormar AI Assistant</h3>
+            <p class="project__desc">
+              An AI-based assistant that automates scheduling and task management.
+              OOP-based backend with external API integration; optimized DB queries
+              to reduce latency by ~30%.
+            </p>
+            <ul class="tags tags--sm"><li>Python</li><li>REST APIs</li><li>OOP</li></ul>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="project__body">
+            <p class="project__label mono">Academic · AI + IoT</p>
+            <h3 class="project__title">Disaster Response Drone</h3>
+            <p class="project__desc">
+              An AI-powered autonomous drone for disaster response in remote areas —
+              ArduPilot flight control, GPS + visual SLAM navigation, LiDAR obstacle
+              avoidance, a 5kg payload delivery mechanism, and LoRa + 4G comms for
+              network-denied environments.
+            </p>
+            <ul class="tags tags--sm"><li>Python</li><li>ArduPilot</li><li>OpenCV</li><li>LoRa</li></ul>
+            <div class="project__links">
+              <button type="button" class="watch-btn" data-lb="video"
+                      data-src="content/drone-project-demo.mp4"
+                      data-title="Disaster Response Drone — demo">
+                <span aria-hidden="true">▶</span> Watch demo
+              </button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ EXPERIENCE ============================ -->
+  <section class="section section--alt" id="experience">
+    <div class="container">
+      <h2 class="section__title"><span class="section__num">04.</span> Experience</h2>
+
+      <ol class="timeline">
+        <li class="timeline__item">
+          <div class="timeline__head">
+            <h3>Winter Intern — Web &amp; Network Development</h3>
+            <span class="timeline__date mono">Dec 2024 – Feb 2025</span>
+          </div>
+          <p class="timeline__org">Netcamp Solutions Pvt. Ltd.</p>
+          <p>Worked across HTML, CSS, JavaScript, Android development and network management under industry mentors. Completed all projects on time; certified by RKGIT HOD-CSE.</p>
+        </li>
+
+        <li class="timeline__item">
+          <div class="timeline__head">
+            <h3>Cybersecurity Analyst — Job Simulation</h3>
+            <span class="timeline__date mono">June 2025</span>
+          </div>
+          <p class="timeline__org">Tata / Forage</p>
+          <p>Completed practical tasks in IAM fundamentals, security strategy, and platform integration. Designed custom IAM solutions for enterprise scenarios and sharpened security-assessment skills in a real-world simulation framework.</p>
+        </li>
+
+        <li class="timeline__item">
+          <div class="timeline__head">
+            <h3>Technical Mentor — Robo-War Event</h3>
+            <span class="timeline__date mono">May 2025</span>
+          </div>
+          <p class="timeline__org">Electrazz Society, RKGIT</p>
+          <p>Mentored student teams in hardware design, circuit integration, and IoT-based robotics for a 2-day workshop. Recognized with a Certificate of Appreciation by the RKGIT Director.</p>
+        </li>
+      </ol>
+
+      <div class="achievements">
+        <h3 class="achievements__title">Achievements</h3>
+        <ul class="achievements__list">
+          <li><strong>Smart India Hackathon</strong> — Internal round finalist; built a working prototype under tight deadlines with a cross-functional team.</li>
+          <li><strong>Outskill Gen AI Mastermind</strong> — 16 hours of hands-on training in generative-AI workflows and modern AI tooling.</li>
+          <li><strong>90+ in final project evaluations</strong> for IoT-based solutions in the B.Tech curriculum.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ CONTACT ============================ -->
+  <section class="section" id="contact">
+    <div class="container container--narrow contact">
+      <h2 class="section__title"><span class="section__num">05.</span> Get in touch</h2>
+      <p class="contact__lede">
+        I'm currently open to internships and freelance web projects. Drop a message
+        and I'll get back to you — usually within a day.
+      </p>
+
+      <!-- Netlify Forms: name + data-netlify se Netlify ise capture karta hai.
+           Deploy hone par messages Netlify dashboard + email pe aate hain.
+           (Localhost/GitHub Pages par ye kaam nahi karta — wahan JS email
+           fallback dikha deta hai.) -->
+      <form class="form" id="contactForm" name="contact" method="POST"
+            data-netlify="true" netlify-honeypot="bot-field" novalidate>
+        <!-- JS se submit karte hain, isliye form-name hidden field zaroori hai -->
+        <input type="hidden" name="form-name" value="contact">
+        <!-- Honeypot: bots ise bhar dete hain, insaan ise dekh nahi sakta -->
+        <p class="hp" hidden><label>Don't fill this out: <input name="bot-field"></label></p>
+
+        <div class="form__grid">
+          <div class="form__row">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your name" autocomplete="name">
+            <p class="form__err" id="err-name"></p>
+          </div>
+          <div class="form__row">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email">
+            <p class="form__err" id="err-email"></p>
+          </div>
+        </div>
+        <div class="form__row">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="4" placeholder="What would you like to build?"></textarea>
+          <p class="form__err" id="err-message"></p>
+        </div>
+        <button type="submit" class="btn btn--full">Send message</button>
+        <p class="form__note" id="formNote" role="status" aria-live="polite"></p>
+      </form>
+
+      <p class="contact__or">or email me directly at
+        <a href="mailto:vanshbhardwaj23off@gmail.com">vanshbhardwaj23off@gmail.com</a>
+      </p>
+
+      <ul class="socials">
+        <li><a href="https://github.com/vansh231205" target="_blank" rel="noopener" data-social="github">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/vansh-developer/" target="_blank" rel="noopener" data-social="linkedin">LinkedIn</a></li>
+      </ul>
+    </div>
+  </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <a href="#hero" class="logo">&lt;VB<span>/</span>&gt;</a>
+      <p>Designed &amp; built by Vansh Bhardwaj · 2026</p>
+    </div>
+  </footer>
+
+  <!-- ============================ LIGHTBOX ============================
+       Certificates aur video isi box me khulte hain — naya tab nahi.
+       Peeche main page dikhta rehta hai (dark blur ke through).
+       ================================================================= -->
+  <div class="lightbox" id="lightbox" hidden>
+    <div class="lightbox__backdrop" data-lb-close></div>
+
+    <div class="lightbox__panel" role="dialog" aria-modal="true" aria-labelledby="lbTitle">
+      <header class="lightbox__bar">
+        <h3 class="lightbox__title" id="lbTitle"></h3>
+        <div class="lightbox__actions">
+          <a class="lightbox__open mono" id="lbOpen" href="#" target="_blank" rel="noopener">Open ↗</a>
+          <button type="button" class="lightbox__close" id="lbClose" aria-label="Close">&times;</button>
+        </div>
+      </header>
+      <div class="lightbox__body" id="lbBody"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

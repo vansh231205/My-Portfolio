@@ -1,0 +1,979 @@
+/* =========================================================
+   Vansh Bhardwaj — Developer Portfolio
+
+   1. Variables      7.  Skills
+   2. Reset          8.  Projects
+   3. Utilities      9.  Experience / timeline
+   4. Buttons        10. Contact + form
+   5. Navbar         11. Footer
+   6. Hero / About   12. Animations
+                     13. RESPONSIVE
+   ========================================================= */
+
+/* ---------- 1. VARIABLES ---------- */
+:root {
+  --bg:         #0a0e17;
+  --bg-alt:     #0e1420;
+  --surface:    #131b2a;
+  --surface-2:  #182234;
+  --border:     #23304a;
+  --text:       #e4ecf7;
+  --text-muted: #8595ad;
+  --accent:     #38bdf8;   /* sky */
+  --accent-2:   #818cf8;   /* indigo */
+  --accent-ink: #03121c;
+
+  --font-sans: 'Sora', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+
+  --gutter:      clamp(1.25rem, 4vw, 2.5rem);
+  --section-pad: clamp(2.75rem, 6vw, 4.5rem);
+  --gap:         clamp(1rem, 2.2vw, 1.5rem);
+
+  --max-width: 1240px;
+  --radius: 14px;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ---------- 2. RESET ---------- */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 72px;   /* navbar 56px + thodi jagah */
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+body.is-locked { overflow: hidden; }
+
+a { color: inherit; text-decoration: none; }
+ul, ol { list-style: none; }
+button, input, textarea { font: inherit; color: inherit; }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.skip-link {
+  position: absolute;
+  top: -60px; left: 16px;
+  z-index: 200;
+  background: var(--accent);
+  color: var(--accent-ink);
+  padding: 10px 18px;
+  border-radius: 0 0 8px 8px;
+  font-weight: 700;
+  transition: top 0.2s;
+}
+.skip-link:focus { top: 0; }
+
+/* Scroll progress bar */
+.scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 3px;
+  width: 0;
+  z-index: 150;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  transition: width 0.1s linear;
+}
+
+/* ---------- 3. UTILITIES ---------- */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+.container--narrow { max-width: 720px; }
+
+.mono { font-family: var(--font-mono); }
+
+.logo {
+  font-family: var(--font-mono);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text);
+}
+.logo span { color: var(--accent); }
+
+/* ---------- 4. BUTTONS ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 0 26px;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-weight: 700;
+  font-size: 0.95rem;
+  border: 1px solid var(--accent);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.2s var(--ease), box-shadow 0.2s, background 0.2s;
+}
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px -10px color-mix(in srgb, var(--accent) 60%, transparent);
+}
+.btn:active { transform: translateY(0); }
+
+.btn--ghost {
+  background: transparent;
+  color: var(--accent);
+  border-color: var(--border);
+}
+.btn--ghost:hover {
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
+  border-color: var(--accent);
+  box-shadow: none;
+}
+.btn--sm   { min-height: 40px; padding: 0 18px; font-size: 0.88rem; border-radius: 8px; }
+.btn--full { width: 100%; }
+
+/* ---------- 5. NAVBAR ---------- */
+.nav {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 100;
+  border-bottom: 1px solid transparent;
+  transition: background 0.3s, border-color 0.3s, backdrop-filter 0.3s;
+}
+.nav.is-scrolled {
+  background: rgba(10, 14, 23, 0.85);
+  backdrop-filter: blur(14px);
+  border-bottom-color: var(--border);
+}
+.nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+}
+.nav__links {
+  display: flex;
+  align-items: center;
+  gap: clamp(1.2rem, 2.6vw, 2.1rem);
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+}
+.nav__links a:not(.btn) {
+  color: var(--text-muted);
+  transition: color 0.2s;
+}
+.nav__links a:not(.btn):hover,
+.nav__links a:not(.btn).is-active { color: var(--accent); }
+
+.nav__toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 44px; height: 44px;
+  background: none; border: none;
+  cursor: pointer;
+}
+.nav__toggle span {
+  display: block;
+  width: 24px; height: 2px;
+  margin-inline: auto;
+  background: var(--text);
+  border-radius: 2px;
+  transition: transform 0.3s var(--ease), opacity 0.2s;
+}
+.nav__toggle.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav__toggle.is-open span:nth-child(2) { opacity: 0; }
+.nav__toggle.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.nav__overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(3px);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.nav__overlay.is-visible { opacity: 1; }
+
+/* ---------- 6. HERO ---------- */
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  padding: 120px 0 80px;
+  overflow: hidden;
+}
+/* Background glow */
+.hero__glow {
+  position: absolute;
+  top: -10%; left: 50%;
+  translate: -50% 0;
+  width: min(900px, 120vw);
+  aspect-ratio: 1;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.14), transparent 62%);
+  z-index: -1;
+  pointer-events: none;
+}
+/* Two-column on laptop: text left, terminal card right.
+   Neeche responsive me single column ho jata hai. */
+.hero__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  align-items: center;
+  gap: clamp(2rem, 5vw, 4.5rem);
+  width: 100%;
+}
+.hero__content { min-width: 0; }
+
+/* Terminal / code card */
+.hero__visual { min-width: 0; }
+.code-card {
+  background: #0c1524;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.7);
+  transform: perspective(1200px) rotateY(-4deg);
+  transition: transform 0.5s var(--ease);
+}
+.code-card:hover { transform: perspective(1200px) rotateY(0deg); }
+.code-card__bar {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 12px 16px;
+  background: #0a1120;
+  border-bottom: 1px solid var(--border);
+}
+.code-card__bar span {
+  width: 11px; height: 11px;
+  border-radius: 50%;
+  background: #2a3852;
+}
+.code-card__bar span:nth-child(1) { background: #ff5f57; }
+.code-card__bar span:nth-child(2) { background: #febc2e; }
+.code-card__bar span:nth-child(3) { background: #28c840; }
+.code-card__bar em {
+  margin-left: auto;
+  font-style: normal;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+.code-card__body {
+  padding: 20px;
+  font-family: var(--font-mono);
+  font-size: clamp(0.72rem, 1.1vw, 0.86rem);
+  line-height: 1.7;
+  color: #c3d0e6;
+  overflow-x: auto;
+}
+.code-card__body code { white-space: pre; }
+.c-key { color: #c084fc; }
+.c-var { color: #38bdf8; }
+.c-str { color: #86efac; }
+.c-fn  { color: #fbbf24; }
+.c-com { color: #64748b; font-style: italic; }
+
+/* Availability badge */
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  background: rgba(56, 189, 248, 0.08);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  border-radius: 999px;
+  padding: 7px 15px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--accent);
+  margin-bottom: 24px;
+}
+.status__dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.6);
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.6); }
+  70%  { box-shadow: 0 0 0 7px rgba(56, 189, 248, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0); }
+}
+
+.hero__hi {
+  font-family: var(--font-mono);
+  color: var(--accent);
+  font-size: 0.95rem;
+  margin-bottom: 18px;
+}
+.hero__hi .mono { margin-right: 6px; }
+
+.hero__name {
+  /* Size aisa rakha hai ki naam har width pe ek hi line me aa jaye
+     (2-column layout me column ~575px ka hota hai) */
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+  background: linear-gradient(120deg, var(--text) 30%, var(--accent) 75%, var(--accent-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.hero__role {
+  font-size: clamp(1.4rem, 4.5vw, 2.6rem);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--text-muted);
+  margin: 10px 0 26px;
+  text-wrap: balance;
+}
+.hero__text, .about__text p, .project__desc, .contact__lede { text-wrap: pretty; }
+.hero__role .amp { color: var(--accent); }
+
+.hero__text {
+  color: var(--text-muted);
+  font-size: clamp(1rem, 2vw, 1.12rem);
+  max-width: 600px;
+  margin-bottom: 34px;
+}
+.hero__actions { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 48px; }
+
+.hero__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 28px;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+.hero__meta .mono { margin-right: 6px; }
+
+/* ---------- SECTION HEADINGS ---------- */
+.section { padding-block: var(--section-pad); }
+.section--alt { background: var(--bg-alt); }
+
+.section__title {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: clamp(1.7rem, 4vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+.section__num {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--accent);
+}
+/* Trailing gradient line — heading ke baad width bharti hai */
+.section__title::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  min-width: 40px;
+  background: linear-gradient(90deg, var(--border), transparent);
+}
+
+/* ---------- ABOUT ---------- */
+.about {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: clamp(2rem, 5vw, 3.5rem);
+  align-items: start;
+}
+.about__text p { color: var(--text-muted); margin-bottom: 16px; }
+.about__text p:last-child { margin-bottom: 0; }
+
+.about__card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 26px;
+  position: sticky;
+  top: 100px;
+}
+.about__avatar {
+  display: grid;
+  place-items: center;
+  width: 72px; height: 72px;
+  margin-bottom: 22px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: var(--accent-ink);
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 1.6rem;
+}
+.about__facts > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 11px 0;
+  border-top: 1px solid var(--border);
+  font-size: 0.9rem;
+}
+.about__facts dt { color: var(--text-muted); }
+.about__facts dd { font-weight: 600; text-align: right; }
+
+/* ---------- 7. SKILLS ---------- */
+/* auto-fit: jitni jagah ho utne columns khud ban jate hain
+   (laptop pe 4, tablet pe 2, mobile pe 1) */
+.skills {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: var(--gap);
+}
+.skills__group {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+}
+.skills__group h3 {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+.tags { display: flex; flex-wrap: wrap; gap: 9px; }
+.tags li {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 7px 13px;
+  font-size: 0.86rem;
+  font-family: var(--font-mono);
+  transition: border-color 0.2s, color 0.2s, transform 0.2s;
+}
+.tags li:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+.tags--sm li { padding: 5px 10px; font-size: 0.76rem; }
+
+/* ---------- 8. PROJECTS ---------- */
+.projects {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--gap);
+}
+.project {
+  position: relative;   /* stretched-link ka anchor point */
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: transform 0.3s var(--ease), border-color 0.3s, background 0.3s;
+}
+.project:hover {
+  transform: translateY(-6px);
+  border-color: var(--accent);
+  background: var(--surface-2);
+}
+/* Featured project full width with accent edge */
+.project--featured {
+  grid-column: 1 / -1;
+  border-color: color-mix(in srgb, var(--accent) 40%, transparent);
+  background:
+    linear-gradient(120deg, color-mix(in srgb, var(--accent) 7%, transparent), transparent 55%),
+    var(--surface);
+}
+.project__body { padding: clamp(1.4rem, 3vw, 2rem); }
+
+.project__label {
+  font-size: 0.74rem;
+  color: var(--accent);
+  letter-spacing: 0.05em;
+  margin-bottom: 10px;
+}
+.project__title { font-size: 1.25rem; font-weight: 700; margin-bottom: 12px; }
+.project__desc { color: var(--text-muted); font-size: 0.94rem; margin-bottom: 18px; }
+.project--featured .project__desc { max-width: 640px; }
+
+.project__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: 16px;
+}
+.project__links a {
+  font-family: var(--font-mono);
+  font-size: 0.86rem;
+  color: var(--accent);
+  font-weight: 500;
+
+  /* z-index 2 = overlay ke UPAR. Isi wajah se "Code" par tap karne se
+     GitHub khulta hai, live demo nahi. */
+  position: relative;
+  z-index: 2;
+}
+.project__links a:hover { text-decoration: underline; }
+
+/* ---- Poore card par tap = live demo ----
+   "Live demo" link ka ::after poore card ko dhak leta hai (z-index 1),
+   isliye card me kahin bhi tap karo to wahi khulta hai.
+   Ye link khud `position: static` rehta hai — tabhi uska ::after card ke
+   hisaab se fail hota hai, apne hisaab se nahi. */
+.project__links a.is-primary { position: static; }
+.project__links a.is-primary::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: var(--radius);
+}
+/* Cursor sirf un cards par jinme live demo hai — baaki cards clickable
+   nahi hain, to unpar pointer dikhana jhooth hoga */
+.project:has(a.is-primary) { cursor: pointer; }
+
+/* ---------- 9. EXPERIENCE / TIMELINE ---------- */
+.timeline {
+  position: relative;
+  margin-left: 8px;
+  padding-left: 30px;
+  border-left: 2px solid var(--border);
+}
+.timeline__item { padding-bottom: 34px; }
+.timeline__item:last-child { padding-bottom: 0; }
+.timeline__item::before {
+  content: "";
+  position: absolute;
+  left: -7px;
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px var(--bg-alt);
+}
+.timeline__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 14px;
+  margin-bottom: 4px;
+}
+.timeline__head h3 { font-size: 1.08rem; font-weight: 700; }
+.timeline__date { font-size: 0.8rem; color: var(--accent); }
+.timeline__org { color: var(--text-muted); font-weight: 600; font-size: 0.92rem; margin-bottom: 8px; }
+.timeline__item > p:last-child { color: var(--text-muted); font-size: 0.92rem; }
+
+/* ---------- WATCH VIDEO BUTTON ---------- */
+.watch-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: color-mix(in srgb, var(--accent) 11%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+  border-radius: 8px;
+  padding: 9px 16px;
+  font-family: var(--font-mono);
+  font-size: 0.84rem;
+  color: var(--accent);
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+.watch-btn:hover { background: color-mix(in srgb, var(--accent) 20%, transparent); transform: translateY(-2px); }
+
+.achievements {
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: clamp(1.5rem, 3vw, 2rem);
+}
+.achievements__title {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  margin-bottom: 18px;
+}
+.achievements__list li {
+  position: relative;
+  padding-left: 26px;
+  margin-bottom: 12px;
+  color: var(--text-muted);
+  font-size: 0.94rem;
+}
+.achievements__list li:last-child { margin-bottom: 0; }
+.achievements__list li::before {
+  content: "▹";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+}
+.achievements__list strong { color: var(--text); font-weight: 600; }
+
+/* ---------- 10. CONTACT + FORM ---------- */
+.contact__lede { color: var(--text-muted); margin-bottom: 32px; max-width: 560px; }
+
+.form {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: clamp(1.5rem, 3vw, 2rem);
+}
+.form__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+.form__row { margin-bottom: 18px; }
+.form__grid .form__row { margin-bottom: 0; }
+.form__row label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  margin-bottom: 8px;
+}
+.form input, .form textarea {
+  width: 100%;
+  min-height: 48px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 13px 15px;
+  font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.form input:focus, .form textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 16%, transparent);
+}
+.form textarea { resize: vertical; min-height: 110px; }
+.form ::placeholder { color: #566379; }
+
+.form .is-invalid { border-color: #f87171; }
+.form__err { color: #f87171; font-size: 0.8rem; margin-top: 6px; min-height: 0; }
+
+.form__note { margin-top: 16px; text-align: center; font-size: 0.92rem; min-height: 24px; }
+.form__note.is-success { color: var(--accent); font-weight: 600; }
+/* Notice: form abhi backend se juda nahi — visitor ko email ki taraf bhejta hai */
+.form__note.is-notice {
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+.form__note.is-notice a {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: underline;
+}
+/* Honeypot — insaan ko kabhi na dikhe (bots ise bhar dete hain) */
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+.contact__or {
+  margin-top: 26px;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.92rem;
+}
+.contact__or a { color: var(--accent); }
+.contact__or a:hover { text-decoration: underline; }
+
+.socials {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 26px;
+}
+.socials a {
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 9px 18px;
+  transition: color 0.2s, border-color 0.2s, transform 0.2s;
+}
+.socials a:hover { color: var(--accent); border-color: var(--accent); transform: translateY(-2px); }
+
+/* ---------- 10b. LIGHTBOX ----------
+   Certificates + video isi overlay me khulte hain. Backdrop
+   semi-transparent hai taaki peeche main page dikhta rahe. */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  display: grid;
+  place-items: center;
+  padding: clamp(0.75rem, 3vw, 2.5rem);
+}
+.lightbox[hidden] { display: none; }
+
+.lightbox__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(5, 8, 14, 0.72);
+  backdrop-filter: blur(6px);
+  opacity: 0;
+  transition: opacity 0.3s var(--ease);
+}
+.lightbox.is-open .lightbox__backdrop { opacity: 1; }
+
+.lightbox__panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: min(1000px, 100%);
+  max-height: 100%;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 40px 90px -30px rgba(0, 0, 0, 0.85);
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(14px) scale(0.98);
+  transition: opacity 0.3s var(--ease), transform 0.3s var(--ease);
+}
+.lightbox.is-open .lightbox__panel { opacity: 1; transform: none; }
+
+.lightbox__bar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 13px 16px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+.lightbox__title {
+  flex: 1;
+  min-width: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.lightbox__actions { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+.lightbox__open {
+  font-size: 0.78rem;
+  color: var(--accent);
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  padding: 7px 12px;
+  transition: border-color 0.2s;
+}
+.lightbox__open:hover { border-color: var(--accent); }
+.lightbox__close {
+  display: grid;
+  place-items: center;
+  width: 36px; height: 36px;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  color: var(--text);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+.lightbox__close:hover { border-color: var(--accent); color: var(--accent); }
+
+.lightbox__body {
+  flex: 1;
+  min-height: 0;
+  background: #0a0f18;
+}
+/* PDF viewer */
+.lightbox__body iframe {
+  display: block;
+  width: 100%;
+  height: min(78vh, 780px);
+  border: 0;
+}
+/* Video — 16:9, panel ke andar fit */
+.lightbox__body video {
+  display: block;
+  width: 100%;
+  max-height: 78vh;
+  background: #000;
+}
+/* Mobile fallback jab browser PDF inline render na kar sake */
+.lightbox__fallback {
+  padding: 40px 24px;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.92rem;
+}
+.lightbox__fallback .btn { margin-top: 18px; }
+
+/* ---------- 11. FOOTER ---------- */
+.footer {
+  border-top: 1px solid var(--border);
+  padding-block: 30px;
+}
+.footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+.footer p { color: var(--text-muted); font-family: var(--font-mono); font-size: 0.82rem; }
+
+/* =========================================================
+   11b. SECTION ACCENT COLORS
+
+   Har section apna --accent override karta hai. Kyunki poore
+   CSS me var(--accent) use hua hai, sirf ye variable badalne se
+   us section ke numbers, headings, borders, hovers, buttons —
+   sab apne aap us color me ho jate hain.
+
+   Palette wahi hai jo hero ke code card me hai (purple/green/
+   amber/indigo), isliye alag-alag hoke bhi ek family lagti hai.
+   HERO ko chhua nahi — wo cyan hi rehta hai.
+   ========================================================= */
+#about {
+  --accent:     #818cf8;   /* indigo */
+  --accent-2:   #a5b4fc;
+  --accent-ink: #0a0a2e;
+}
+#skills {
+  --accent:     #c084fc;   /* purple */
+  --accent-2:   #e9d5ff;
+  --accent-ink: #1e0a2e;
+}
+#projects {
+  --accent:     #34d399;   /* emerald */
+  --accent-2:   #6ee7b7;
+  --accent-ink: #032218;
+}
+#experience {
+  --accent:     #fbbf24;   /* amber */
+  --accent-2:   #fcd34d;
+  --accent-ink: #2a1a00;
+}
+#contact {
+  --accent:     #fb7185;   /* rose */
+  --accent-2:   #fda4af;
+  --accent-ink: #2d0510;
+}
+
+/* Skills ke andar har group ka apna color — ek hi section me variety */
+#skills .skills__group:nth-child(1) { --accent: #c084fc; }  /* Languages  */
+#skills .skills__group:nth-child(2) { --accent: #38bdf8; }  /* Web        */
+#skills .skills__group:nth-child(3) { --accent: #fbbf24; }  /* Tools      */
+#skills .skills__group:nth-child(4) { --accent: #34d399; }  /* Concepts   */
+
+/* Project cards bhi rotate karte hain — 7 cards ek jaise na lagein */
+#projects .project:nth-child(2) { --accent: #c084fc; }
+#projects .project:nth-child(3) { --accent: #fbbf24; }
+#projects .project:nth-child(4) { --accent: #38bdf8; }
+#projects .project:nth-child(5) { --accent: #f472b6; }
+#projects .project:nth-child(6) { --accent: #818cf8; }
+#projects .project:nth-child(7) { --accent: #2dd4bf; }
+
+/* Har section ke upar halka sa colored glow — flat-ness todta hai */
+.section { position: relative; isolation: isolate; }
+.section::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 340px;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(
+    62% 100% at 50% 0%,
+    color-mix(in srgb, var(--accent) 13%, transparent),
+    transparent 72%
+  );
+}
+
+/* ---------- 12. ANIMATIONS ---------- */
+.js-ready .reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+}
+.js-ready .reveal.is-visible { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal { opacity: 1 !important; transform: none !important; }
+}
+
+/* =========================================================
+   13. RESPONSIVE
+   ========================================================= */
+
+/* Laptop/tablet: hero ek column, terminal card hide (decorative hai) */
+@media (max-width: 940px) {
+  .hero__inner { grid-template-columns: 1fr; }
+  .hero__content { max-width: 760px; }
+  .hero__visual { display: none; }
+  .hero { align-items: flex-start; }
+}
+
+@media (max-width: 880px) {
+  .about { grid-template-columns: 1fr; }
+  .about__card { position: static; order: -1; }
+}
+
+@media (max-width: 720px) {
+  html { scroll-padding-top: 76px; }
+
+  .nav__toggle { display: flex; }
+  .nav__links {
+    position: fixed;
+    top: 0; right: 0;
+    z-index: 95;
+    width: min(78vw, 320px);
+    height: 100dvh;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    gap: 6px;
+    background: var(--bg-alt);
+    border-left: 1px solid var(--border);
+    padding: 90px 28px 40px;
+    font-size: 1.05rem;
+    transform: translateX(100%);
+    transition: transform 0.35s var(--ease);
+  }
+  .nav__links.is-open { transform: translateX(0); }
+  .nav__links a:not(.btn) {
+    padding: 15px 0;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+  }
+  .nav__links .btn { margin-top: 22px; }
+
+  .hero { min-height: auto; padding: 110px 0 70px; }
+  .hero__actions { width: 100%; }
+  .hero__actions .btn { flex: 1 1 auto; }
+
+  /* skills khud auto-fit se adjust hota hai; projects single column */
+  .projects { grid-template-columns: 1fr; }
+  .form__grid { grid-template-columns: 1fr; gap: 18px; }
+  .form__grid .form__row:first-child { margin-bottom: 0; }
+}
+
+@media (max-width: 420px) {
+  .hero__actions { flex-direction: column; }
+  .hero__actions .btn { width: 100%; }
+  .footer__inner { flex-direction: column; text-align: center; }
+  .timeline__head { gap: 2px; }
+}
